@@ -1,0 +1,33 @@
+<div>
+  <div style="display: flex; justify-content: center; margin-top: 3%;">
+    <ngx-charts-line-chart
+      [view]="view"
+      [scheme]="'cool'"
+      [results]="lineChartData"
+      [gradient]="gradient"
+      [xAxis]="showXAxis"
+      [yAxis]="showYAxis"
+      [legend]="showLegend"
+      [showXAxisLabel]="showXAxisLabel"
+      [xAxisLabel]="xAxisLabel"
+      [showYAxisLabel]="showYAxisLabel"
+      [yAxisLabel]="yAxisLabel"
+      [autoScale]="true"
+      (activate)="onTooltipActivate($event)"
+      (deactivate)="onTooltipDeactivate()">
+    </ngx-charts-line-chart>
+  </div>
+
+  <div style="margin-top: 20px; width: 50%; margin-left:23%">
+    <label>Timeline Scrubber:</label>
+    <input type="range"
+           [min]="minTimestamp"
+           [max]="maxTimestamp"
+           [step]="2.25"
+           [(ngModel)]="currentTimestamp"
+           (input)="updateChartData()"
+           style="width: 100%;">
+    <div style="text-align: center; margin-top: 5px;">Current Time: {{ currentTimestamp }}</div>
+  </div>
+</div>
+
